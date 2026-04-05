@@ -8,12 +8,18 @@ Created on Sun Apr  5 12:08:45 2026
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import zipfile
 
 # LOAD DATA
 @st.cache_data
 def load_data():
-    matches = pd.read_csv("https://raw.githubusercontent.com/ramjidoolla/ipl-data-set/master/matches.csv")
-    deliveries = pd.read_csv("https://raw.githubusercontent.com/ramjidoolla/ipl-data-set/master/deliveries.csv")
+    matches = pd.read_csv("matches.csv")
+
+    # unzip deliveries
+    with zipfile.ZipFile("deliveries.zip", 'r') as zip_ref:
+        zip_ref.extractall()
+
+    deliveries = pd.read_csv("deliveries.csv")
 
     matches['date'] = pd.to_datetime(matches['date'])
     return matches, deliveries
