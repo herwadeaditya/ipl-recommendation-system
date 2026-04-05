@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 # LOAD DATA
 @st.cache_data
 def load_data():
-    matches = pd.read_csv("https://raw.githubusercontent.com/akshaykumar6/ipl-data/master/matches.csv")
-    deliveries = pd.read_csv("https://raw.githubusercontent.com/akshaykumar6/ipl-data/master/deliveries.csv")
+    matches = pd.read_csv("https://raw.githubusercontent.com/ramjidoolla/ipl-data-set/master/matches.csv")
+    deliveries = pd.read_csv("https://raw.githubusercontent.com/ramjidoolla/ipl-data-set/master/deliveries.csv")
 
     matches['date'] = pd.to_datetime(matches['date'])
     return matches, deliveries
